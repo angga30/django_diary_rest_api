@@ -1,0 +1,14 @@
+version: '2'
+services:
+    docker_django:
+        build: ./taptalk_diary
+        image: app-image
+        environment:
+            TZ: Asia/Bangkok
+            DB_NAME: tap_talk
+            USER: admin
+            PASS: 30031998
+            HOST: 35.193.42.252
+        ports:
+        - 8000:8000
+        command: gunicorn taptalk_diary.wsgi:application --bind 0.0.0.0:8000
